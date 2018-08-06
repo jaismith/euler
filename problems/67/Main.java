@@ -24,16 +24,13 @@ class Main {
 
                     y++;
                }
+
+               in.close();
           } catch(Exception e) {
                System.out.println("Properly formatted input file must be provided in command line argument. Delimiter: ' ', Line Break: '\\r\\n'\n\nExample:\n3\n7 4\n2 4 6\n8 5 9 3\n");
                System.out.println("Error: " + e);
                System.exit(0);
           }
-
-          /*print array
-          for(int i = 0; i < 15; i++) {
-               System.out.println(Arrays.toString(array[i]));
-          }*/
 
           //add up routes
           y = 98;
