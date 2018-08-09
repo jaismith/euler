@@ -38,17 +38,25 @@ class Main {
                int index = i - 1;
 
                //find place
-               while(index > 0 && target.compareTo(dictionary.get(index)) <= 0) {
+               while(index >= 0 && target.compareTo(dictionary.get(index)) <= 0) {
                     index--;
                }
 
-               //System.out.println("Placing " + target + " before );
-
+               //rearrange target
                dictionary.remove(i);
                dictionary.add(index + 1, target);
           }
 
+          int output = 0;
 
+          //add up scores
+          for(int i = 0; i < dictionary.size(); i++) {
+               System.out.println(dictionary.get(i) + " gets a score of " + dictionary.get(i).getScore() + " * " + (i + 1) + " = " + dictionary.get(i).getScore() * (i + 1));
+               output += dictionary.get(i).getScore() * (i + 1);
+          }
+
+          //output
           System.out.println(dictionary);
+          System.out.println(output);
      }
 }
