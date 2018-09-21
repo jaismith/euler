@@ -5,30 +5,13 @@ import java.util.ArrayList;
 
 class Main {
      public static void main(String[] args) {
-          /*//testing Candidate class
-
-          int abundantSum = 0;
-
-          for(int i = 1; i <= 500; i++) {
-               Candidate test = new Candidate(i);
-
-               if(test.isType().equals("abundant")) {
-                    abundantSum++;
-               }
-               //System.out.println(i + ": " + test.isType());
-          }
-
-          System.out.println("Output was " + (abundantSum / 5) + "% abundant");
-
-          System.out.println("done");*/
-
-          ArrayList<Integer> eliminated = new ArrayList<Integer>();
-
-          ArrayList<Integer> abundantList = new ArrayList<Integer>();
+          //declare arraylists
+          ArrayList<Integer> eliminated = new ArrayList<Integer>(); //for eliminated numbers (not abundant)
+          ArrayList<Integer> abundantList = new ArrayList<Integer>(); //abundant numbers
 
           System.out.println("Generating list of abundant numbers...");
 
-          for(int i = 0; i < 28123; i++) {
+          for(int i = 12; i <= 28123; i++) {
                Candidate candidate = new Candidate(i);
 
                if(candidate.isType().equals("abundant")) {
@@ -36,7 +19,9 @@ class Main {
                }
           }
 
-          System.out.println(abundantList.subList(abundantList.size() - 6, abundantList.size() - 1));
+          System.out.println(abundantList.subList(abundantList.size() - 5, abundantList.size()));
+
+          System.out.println("There are " + abundantList.size() + " abundant numbers.");
 
           System.out.println("Calculating sums...");
 
@@ -49,12 +34,26 @@ class Main {
                     }
                }
 
-               System.out.print("\r" + (((double)i/abundantList.size()) * 100) + "%  complete...");
+               System.out.printf("\r%.5f%% complete...", (((double)i/abundantList.size()) * 100));
           }
+
+          /*System.out.println("Checking sums...");
+
+          for(int i = 28123; i > 0; i--) {
+               for(int j = 0; j < abundantList.size() / 2; j++) {
+                    if(abundantList.contains(abundantList.get(j) - i)) {
+                         eliminated.add(i);
+                         //System.out.println(i + " and " + j + " add to " + )
+                         break;
+                    }
+               }
+
+               System.out.printf("\r%.5f%% complete...", (((28123 - i) / 28123.0) * 100));
+          }*/
 
           System.out.println(eliminated.subList(eliminated.size() - 6, eliminated.size() - 1));
 
-          System.out.println("\nFinding un-eliminated terms...");
+          System.out.println("Finding un-eliminated terms...");
 
           ArrayList<Integer> output = new ArrayList<Integer>();
 

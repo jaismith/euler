@@ -15,7 +15,7 @@ public class Candidate {
           this.number = number;
 
           //find divisors
-          for(int i = 1; i < (number / 2) + 1; i++) {
+          for(int i = 1; i < number / 2 + 1; i++) {
                if(!divisorList.contains(i)) {
                     if(number % i == 0) {
                          divisorList.add(i);
@@ -57,11 +57,11 @@ public class Candidate {
 
      public String isType() {
           if(number < sum) {
-               return "deficient";
+               return "abundant";
           } else if (number == sum) {
                return "perfect";
           } else {
-               return "abundant";
+               return "deficient";
           }
      }
 }
