@@ -9,7 +9,7 @@ class Main {
           ArrayList<Integer> eliminated = new ArrayList<Integer>(); //for eliminated numbers (not abundant)
           ArrayList<Integer> abundantList = new ArrayList<Integer>(); //abundant numbers
 
-          System.out.println("Generating list of abundant numbers...");
+          System.out.print("Generating list of abundant numbers...");
 
           for(int i = 12; i <= 28123; i++) {
                Candidate candidate = new Candidate(i);
@@ -23,18 +23,22 @@ class Main {
 
           System.out.println("There are " + abundantList.size() + " abundant numbers.");
 
-          System.out.println("Calculating sums...");
+          System.out.print("Calculating sums...");
 
           for(int i = 0; i < abundantList.size(); i++) {
-               for(int j = i; j < abundantList.size() - i; j++) {
-                    int sum = i + j;
+               for(int j = i; j < abundantList.size(); j++) {
+                    int sum = abundantList.get(i) + abundantList.get(j);
+
+                    //System.out.println("sum of " + abundantList.get(i) + " and " + abundantList.get(j) + " is " + sum);
 
                     if(!eliminated.contains(sum)) {
                          eliminated.add(sum);
                     }
                }
 
-               System.out.printf("\r%.5f%% complete...", (((double)i/abundantList.size()) * 100));
+               if(i % 5 == 0) {
+                    System.out.printf("\r%.2f%% complete...", (((double)i/abundantList.size()) * 100));
+               }
           }
 
           /*System.out.println("Checking sums...");
@@ -70,7 +74,7 @@ class Main {
           int sum = 0;
 
           for(int i = 0; i < output.size(); i++) {
-               sum += i;
+               sum += output.get(i);
           }
 
           System.out.println("\nOutput: " + sum);
